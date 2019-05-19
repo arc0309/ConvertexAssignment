@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark bg-dark">
+  <label id="pageHeader" class="navbar-brand">{{pageHeader}}</label>
+</nav>
+<!-- Editable table -->
+<div>
+  <div class="card">
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Value</th>
+            <th class="text-center">Description</th>
+          </tr>
+          <tr *ngFor="let user of userGridDetails; let id = index">
+            <td>
+              <span contenteditable="false">{{user.label}}</span>
+            </td>
+            <td *ngIf="user.type === 'text'">
+              <input type="user.type" contenteditable="true" value="{{user.value}}" (keyup)="changeValue(id, 'text', $event)" (blur)="updateList(id, 'text', $event)"/>
+            </td>
+            <td *ngIf="user.type === 'select'" (change)="changeValue(optid, 'select', $event)" (blur)="updateList(optid, 'select', $event)">
+              <select>
+                <option *ngFor="let opt of user.options; let optid = index" value="{{opt}}">{{opt}}</option>
+              </select>
+            </td>
+            <td *ngIf="user.type === 'check'">
+              <input type="checkbox" checked="{{user.value}}" (click)="changeValue(id, 'checkbox', $event)" (blur)="updateList(id, 'checkbox', $event)"/>
+            </td>
+            <td>
+              <span contenteditable="false">{{user.description}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button id="submitUser" (click)="saveFormValue()">Save</button>
+</div>
+<!-- Editable table -->

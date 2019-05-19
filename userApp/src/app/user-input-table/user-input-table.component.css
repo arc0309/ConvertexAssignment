@@ -1,0 +1,12 @@
+
+label {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    color: white;
+}
+#submitUser {
+    float: right;
+    width: 100px;
+    height: 30px;
+}
