@@ -17,15 +17,15 @@
               <span contenteditable="false">{{user.label}}</span>
             </td>
             <td *ngIf="user.type === 'text'">
-              <input type="user.type" contenteditable="true" value="{{user.value}}" (keyup)="changeValue(id, 'text', $event)" (blur)="updateList(id, 'text', $event)"/>
+              <input type="user.type" contenteditable="true" value="{{user.value}}" (blur)="updateList(id, 'value', $event)"/>
             </td>
-            <td *ngIf="user.type === 'select'" (change)="changeValue(optid, 'select', $event)" (blur)="updateList(optid, 'select', $event)">
+            <td *ngIf="user.type === 'select'" (change)="updateList(id, 'value', $event)">
               <select>
                 <option *ngFor="let opt of user.options; let optid = index" value="{{opt}}">{{opt}}</option>
               </select>
             </td>
             <td *ngIf="user.type === 'check'">
-              <input type="checkbox" checked="{{user.value}}" (click)="changeValue(id, 'checkbox', $event)" (blur)="updateList(id, 'checkbox', $event)"/>
+              <input type="checkbox" checked="{{user.value}}" (click)="updateList(id, 'value', $event)"/>
             </td>
             <td>
               <span contenteditable="false">{{user.description}}</span>
